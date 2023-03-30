@@ -33,16 +33,17 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
  * <p>If you change the name of the main class (with the public static void main(String[] args))
  * method, change the respective entry in the POM.xml file (simply search for 'mainClass').
  */
-public class StreamingJob {
+public class FilterTransactionJob {
 
     public static void main(String[] args) throws Exception {
         // set up the streaming execution environment
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
+        long now = System.currentTimeMillis();
         DataStream<Transaction> transactionStream = env.fromElements(
-                new Transaction("A1", "A2", 1000),
-                new Transaction("A1", "A3", 8000),
-                new Transaction("A1", "A3", 500)
+                new Transaction("A1", "C1", 1000, now - 230000),
+                new Transaction("A2", "C1", 8000, now - 130000),
+                new Transaction("A1", "C1", 500, now)
         );
 
         DataStream<Transaction> fraudTransactionStream = transactionStream.filter(transaction -> transaction.getAmount() > 5000);

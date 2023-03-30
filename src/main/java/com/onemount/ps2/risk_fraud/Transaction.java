@@ -7,19 +7,23 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Transaction {
-    private String creditAccountNumber;
 
     private String debitAccountNumber;
 
+    private String campaignId;
+
     private Integer amount;
+
+    private Long eventTime;
 
 
     @Override
     public String toString() {
         return "Transaction{" +
-                "creditAccountNumber='" + creditAccountNumber + '\'' +
-                ", debitAccountNumber='" + debitAccountNumber + '\'' +
+                "debitAccountNumber='" + debitAccountNumber + '\'' +
+                ", campaignId='" + campaignId + '\'' +
                 ", amount=" + amount +
+                ", eventTime=" + eventTime +
                 '}';
     }
 }

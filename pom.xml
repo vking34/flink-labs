@@ -59,20 +59,8 @@ under the License.
             <version>${flink.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-walkthrough-common_${scala.binary.version}</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-
         <!-- Apache Flink dependencies -->
         <!-- These dependencies are provided, because they should not be packaged into the JAR file. -->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.flink</groupId>-->
-<!--            <artifactId>flink-java</artifactId>-->
-<!--            <version>${flink.version}</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
@@ -86,6 +74,12 @@ under the License.
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-java</artifactId>
+            <version>${flink.version}</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- Add connector dependencies here. They must be in the default scope (compile). -->
 
         <!-- Example:
@@ -192,7 +186,7 @@ under the License.
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.onemount.ps2.risk_fraud.StreamingJob</mainClass>
+                                    <mainClass>com.onemount.ps2.risk_fraud.FilterTransactionJob</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
