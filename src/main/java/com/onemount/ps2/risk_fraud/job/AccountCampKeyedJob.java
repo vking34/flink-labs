@@ -1,9 +1,11 @@
-package com.onemount.ps2.risk_fraud;
+package com.onemount.ps2.risk_fraud.job;
 
 import com.onemount.ps2.risk_fraud.function.AccountCampKeyedFunction;
-import com.onemount.ps2.risk_fraud.key.AccountCampKey;
+import com.onemount.ps2.risk_fraud.key.KeyGenerator;
+import com.onemount.ps2.risk_fraud.model.source.Transaction;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+
 
 public class AccountCampKeyedJob {
 
@@ -21,14 +23,10 @@ public class AccountCampKeyedJob {
         );
 
         transactionStream
-                .keyBy(AccountCampKeyedJob::getKey)
+                .keyBy(KeyGenerator::generateAccountCampKey)
                 .process(new AccountCampKeyedFunction())
                 .print();
 
         env.execute(AccountCampKeyedJob.class.getSimpleName());
-    }
-
-    private static AccountCampKey getKey(Transaction transaction) {
-        return new AccountCampKey(transaction.getDebitAccountNumber(), transaction.getCampaignId());
     }
 }

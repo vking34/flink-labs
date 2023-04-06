@@ -16,8 +16,9 @@
  * limitations under the License.
  */
 
-package com.onemount.ps2.risk_fraud;
+package com.onemount.ps2.risk_fraud.job;
 
+import com.onemount.ps2.risk_fraud.model.source.Transaction;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 

@@ -1,18 +1,20 @@
 package com.onemount.ps2.risk_fraud.function;
 
-import com.onemount.ps2.risk_fraud.Transaction;
-import com.onemount.ps2.risk_fraud.dto.AccountCampOutput;
+import com.onemount.ps2.risk_fraud.model.source.Transaction;
+import com.onemount.ps2.risk_fraud.model.sink.AccountCampAlert;
 import com.onemount.ps2.risk_fraud.key.AccountCampKey;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction;
 import org.apache.flink.util.Collector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Slf4j
-public class AccountCampKeyedFunction extends KeyedProcessFunction<AccountCampKey, Transaction, AccountCampOutput> {
 
+public class AccountCampKeyedFunction extends KeyedProcessFunction<AccountCampKey, Transaction, AccountCampAlert> {
+
+    private final static Logger log = LoggerFactory.getLogger(AccountCampKeyedFunction.class);
     private static final int TOTAL_AMOUNT_THRESHOLD = 10000;
 
     ValueState<Integer> state;
@@ -23,7 +25,7 @@ public class AccountCampKeyedFunction extends KeyedProcessFunction<AccountCampKe
     }
 
     @Override
-    public void processElement(Transaction transaction, Context context, Collector<AccountCampOutput> collector) throws Exception {
+    public void processElement(Transaction transaction, Context context, Collector<AccountCampAlert> collector) throws Exception {
         AccountCampKey key = context.getCurrentKey();
         log.info("Processing key: {}, transaction: {}", key, transaction);
 
@@ -36,6 +38,6 @@ public class AccountCampKeyedFunction extends KeyedProcessFunction<AccountCampKe
         state.update(newTotalAmount);
 
         if (totalAmount < TOTAL_AMOUNT_THRESHOLD && newTotalAmount > TOTAL_AMOUNT_THRESHOLD)
-            collector.collect(new AccountCampOutput(transaction.getDebitAccountNumber()));
+            collector.collect(new AccountCampAlert(transaction.getDebitAccountNumber()));
     }
 }

@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.onemount.ps2.risk_fraud;
+package com.onemount.ps2.risk_fraud.job;
 
 import org.apache.flink.api.java.ExecutionEnvironment;
 
