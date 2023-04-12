@@ -8,7 +8,6 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 
-@Slf4j
 public class SumWindowJob {
 
     public static void main(String[] args) throws Exception {

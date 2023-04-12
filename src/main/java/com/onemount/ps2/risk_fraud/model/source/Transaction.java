@@ -2,9 +2,7 @@ package com.onemount.ps2.risk_fraud.model.source;
 
 
 import com.dslplatform.json.CompiledJson;
-import com.onemount.ps2.risk_fraud.key.AccountCampKey;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.dslplatform.json.JsonAttribute;
 
 
 //@Data
@@ -12,13 +10,13 @@ import lombok.Data;
 @CompiledJson
 public class Transaction {
 
-    private String debitAccountNumber;
+    protected String debitAccountNumber;
 
-    private String campaignId;
+    protected String campaignId;
 
-    private Integer amount;
+    protected Integer amount;
 
-    private Long eventTime;
+    protected Long eventTime;
 
     public Transaction() {
     }
@@ -30,6 +28,7 @@ public class Transaction {
         this.eventTime = eventTime;
     }
 
+    @JsonAttribute(name = "debit_account_number")
     public String getDebitAccountNumber() {
         return debitAccountNumber;
     }
@@ -38,6 +37,7 @@ public class Transaction {
         this.debitAccountNumber = debitAccountNumber;
     }
 
+    @JsonAttribute(name = "campaign_id")
     public String getCampaignId() {
         return campaignId;
     }
@@ -46,6 +46,7 @@ public class Transaction {
         this.campaignId = campaignId;
     }
 
+    @JsonAttribute(name = "amount")
     public Integer getAmount() {
         return amount;
     }
@@ -54,6 +55,7 @@ public class Transaction {
         this.amount = amount;
     }
 
+    @JsonAttribute(name = "event_time")
     public Long getEventTime() {
         return eventTime;
     }

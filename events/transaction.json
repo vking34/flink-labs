@@ -1,0 +1,30 @@
+{
+    "debit_account_number": "A1",
+    "campaign_id": "C1",
+    "amount": 23,
+    "event_time": 1681201578917
+}
+
+
+{
+    "debit_account_number": "A1",
+    "campaign_id": "C1",
+    "amount": 45,
+    "event_time": 1681201588917
+}
+
+{
+    "debit_account_number": "A1",
+    "campaign_id": "C1",
+    "amount": 10000,
+    "event_time": 1681201598917
+}
+
+-- -- -
+
+{
+    "debit_account_number": "A2",
+    "campaign_id": "C1",
+    "amount": 30,
+    "event_time": 1681201579917
+}

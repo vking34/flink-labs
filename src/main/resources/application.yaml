@@ -1,0 +1,18 @@
+kafka:
+  bootstrap-servers: localhost:9092
+  ssl:
+    enabled: false
+    trust-store-location: classpath:truststore.jks
+    trust-store-password: password
+    key-store-location: classpath:keystore.jks
+    key-store-password: password
+
+  topics:
+    transaction:
+      name: "ps2-transaction"
+      group-id: "transaction-group"
+
+    account:
+      name: "ps2-account"
+      group-id: "account-group"
+

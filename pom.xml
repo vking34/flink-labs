@@ -61,6 +61,19 @@ under the License.
             <version>${flink.version}</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.rocksdb</groupId>-->
+<!--            <artifactId>rocksdbjni</artifactId>-->
+<!--            <version>6.22.1</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-statebackend-rocksdb</artifactId>
+            <version>1.16.1</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- Apache Flink dependencies -->
         <!-- These dependencies are provided, because they should not be packaged into the JAR file. -->
         <dependency>
@@ -108,7 +121,19 @@ under the License.
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
+
         <!-- Add connector dependencies here. They must be in the default scope (compile). -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
+        </dependency>
 
         <!-- Example:
 
@@ -121,6 +146,20 @@ under the License.
 
         <!-- Add logging framework, to produce console output when running in the IDE. -->
         <!-- These dependencies are excluded from the application JAR by default. -->
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-json</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
@@ -147,20 +186,20 @@ under the License.
             <scope>runtime</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.apache.flink</groupId>-->
-<!--            <artifactId>flink-runtime_${scala.binary.version}</artifactId>-->
-<!--            <version>${flink.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--            <classifier>tests</classifier>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.flink</groupId>-->
-<!--            <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>-->
-<!--            <version>${flink.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--            <classifier>tests</classifier>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.flink</groupId>-->
+        <!--            <artifactId>flink-runtime_${scala.binary.version}</artifactId>-->
+        <!--            <version>${flink.version}</version>-->
+        <!--            <scope>test</scope>-->
+        <!--            <classifier>tests</classifier>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.flink</groupId>-->
+        <!--            <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>-->
+        <!--            <version>${flink.version}</version>-->
+        <!--            <scope>test</scope>-->
+        <!--            <classifier>tests</classifier>-->
+        <!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -176,7 +215,8 @@ under the License.
                     <target>${target.java.version}</target>
                     <annotationProcessors>
                         <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>
-                        <annotationProcessor>com.dslplatform.json.processor.CompiledJsonAnnotationProcessor</annotationProcessor>
+                        <annotationProcessor>com.dslplatform.json.processor.CompiledJsonAnnotationProcessor
+                        </annotationProcessor>
                     </annotationProcessors>
                 </configuration>
             </plugin>

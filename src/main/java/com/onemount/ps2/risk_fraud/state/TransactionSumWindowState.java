@@ -43,4 +43,12 @@ public class TransactionSumWindowState {
     public void setSum(int sum) {
         this.sum = sum;
     }
+
+    @Override
+    public String toString() {
+        return "TransactionSumWindowState{" +
+                "transactions=" + transactions +
+                ", sum=" + sum +
+                '}';
+    }
 }

@@ -50,4 +50,12 @@ public class AccountCampKey {
     public int hashCode() {
         return Objects.hash(accountNumber, campaignId);
     }
+
+    @Override
+    public String toString() {
+        return "AccountCampKey{" +
+                "accountNumber='" + accountNumber + '\'' +
+                ", campaignId='" + campaignId + '\'' +
+                '}';
+    }
 }
