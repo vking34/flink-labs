@@ -4,7 +4,6 @@ import com.onemount.ps2.risk_fraud.model.sink.AccountCampAlert;
 import com.onemount.ps2.risk_fraud.key.AccountCampKey;
 import com.onemount.ps2.risk_fraud.model.source.Transaction;
 import com.onemount.ps2.risk_fraud.state.TransactionSumWindowState;
-import lombok.SneakyThrows;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
 import org.apache.flink.configuration.Configuration;
@@ -16,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 public class SumWindowFunction extends KeyedProcessFunction<AccountCampKey, Transaction, AccountCampAlert> {
 
-    private final static Logger log = LoggerFactory.getLogger(AccountCampKeyedFunction.class);
+    private final static Logger log = LoggerFactory.getLogger(SumWindowFunction.class);
     private static final int TOTAL_AMOUNT_THRESHOLD = 10000;
 
     private static final long WINDOW_TIME = 5 * 60 * 1000;

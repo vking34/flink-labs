@@ -64,6 +64,11 @@ public class Transaction {
         this.eventTime = eventTime;
     }
 
+
+    public long getProcessingTime() {
+        return System.currentTimeMillis();
+    }
+
     @Override
     public String toString() {
         return "Transaction{" +

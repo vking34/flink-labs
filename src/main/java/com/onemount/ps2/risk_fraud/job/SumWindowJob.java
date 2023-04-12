@@ -3,7 +3,6 @@ package com.onemount.ps2.risk_fraud.job;
 import com.onemount.ps2.risk_fraud.function.SumWindowFunction;
 import com.onemount.ps2.risk_fraud.key.KeyGenerator;
 import com.onemount.ps2.risk_fraud.model.source.Transaction;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 

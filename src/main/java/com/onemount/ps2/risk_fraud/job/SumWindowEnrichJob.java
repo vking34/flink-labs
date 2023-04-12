@@ -11,7 +11,7 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 
-public class ConnectedStreamJob {
+public class SumWindowEnrichJob {
 
     public static void main(String[] args) throws Exception {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -31,6 +31,6 @@ public class ConnectedStreamJob {
                 .print();
 
 
-        env.execute(ConnectedStreamJob.class.getSimpleName());
+        env.execute(SumWindowEnrichJob.class.getSimpleName());
     }
 }
