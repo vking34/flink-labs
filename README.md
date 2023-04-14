@@ -22,7 +22,7 @@ mvn archetype:generate                            \
 ```
 <dependency>
     <groupId>org.apache.flink</groupId>
-    <artifactId>flink-runtime-web_${scala.binary.version}</artifactId>
+    <artifactId>flink-runtime-web</artifactId>
     <version>${flink.version}</version>
 </dependency>
 ```
@@ -31,4 +31,28 @@ mvn archetype:generate                            \
   - `flink-streaming-java`
   - `flink-clients`
   - `flink-java`
+
+
+## Build
+
+- Prerequisites
+  - Java 8
+  - Maven 3.2.5+
+  - Change scope to `provided`:
+    - `flink-streaming-java`
+    - `flink-clients`
+    - `flink-java`
+  - Add dependency:
+    ```
+         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+    ```
+
+- Build
+```
+mvn clean package -Dmaven.test.skip=true
+```
 
